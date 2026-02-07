@@ -1,0 +1,18 @@
+name: airline_sentiment_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+      - mlflow
+      - torch==2.x.x
+      - transformers==4.x.x
+      - sklearn
+      - pandas
+      - tqdm
+      - nlpaug
+      - nltk
+      - numpy
+

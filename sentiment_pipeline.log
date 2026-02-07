@@ -1,0 +1,261 @@
+2026-02-02 02:36:24,361 - __main__ - INFO - ======================================================================
+2026-02-02 02:36:24,361 - __main__ - INFO -        Airline Tweets Sentiment Analysis Project       
+2026-02-02 02:36:24,361 - __main__ - INFO - ======================================================================
+2026-02-02 02:36:24,361 - __main__ - INFO - 
+>>> Step 1: Loading and Cleaning Raw Data
+2026-02-02 02:36:24,361 - data_pipeline - INFO - ============ Starting Sentiment Analysis Data Pipeline ============
+2026-02-02 02:36:24,361 - data_pipeline - INFO - Loading Data .....
+2026-02-02 02:36:24,528 - data_pipeline - INFO - =======================>>> Analysis Function
+2026-02-02 02:36:24,528 - data_pipeline - INFO - Information about Data:
+2026-02-02 02:36:24,569 - data_pipeline - INFO - Statistical Data Analysis:
+2026-02-02 02:36:24,584 - data_pipeline - INFO - Number of rows and columns:
+2026-02-02 02:36:24,585 - data_pipeline - INFO - Columns in Data:
+2026-02-02 02:36:24,585 - data_pipeline - INFO - Frequency of Rows in Data (Duplicates):
+2026-02-02 02:36:24,614 - data_pipeline - INFO - =======================>>> Cleaning Data
+2026-02-02 02:36:24,614 - data_pipeline - INFO - Remove Duplicates
+2026-02-02 02:36:24,643 - data_pipeline - INFO - Shape after removing duplicates: (14604, 15)
+2026-02-02 02:36:24,643 - data_pipeline - INFO - Missing Values Before Cleaning:
+2026-02-02 02:36:24,664 - data_pipeline - INFO - The Percentage of missing values in data:
+ tweet_id                         0.00
+airline_sentiment                0.00
+airline_sentiment_confidence     0.00
+negativereason                  37.28
+negativereason_confidence       28.08
+airline                          0.00
+airline_sentiment_gold          99.73
+name                             0.00
+negativereason_gold             99.78
+retweet_count                    0.00
+text                             0.00
+tweet_coord                     93.05
+tweet_created                    0.00
+tweet_location                  32.34
+user_timezone                   32.96
+dtype: float64
+2026-02-02 02:36:24,710 - data_pipeline - INFO - Missing values filled for key columns
+2026-02-02 02:36:24,718 - data_pipeline - INFO - Columns dropped successfully
+2026-02-02 02:36:24,718 - data_pipeline - INFO - Missing Values After Full Cleaning:
+2026-02-02 02:36:28,186 - data_pipeline - INFO - Final Dataset Shape: (14604, 12)
+2026-02-02 02:36:28,186 - data_pipeline - INFO - Final Columns:
+2026-02-02 02:36:28,186 - data_pipeline - INFO - ============ Data Pipeline Completed Successfully! ============
+2026-02-02 02:36:28,187 - __main__ - INFO - 
+>>> Step 2: Text Cleaning and Preprocessing
+2026-02-02 02:36:28,187 - text_preprocessing - INFO - ===================>>> Starting Text Preprocessing
+2026-02-02 02:36:28,187 - text_preprocessing - INFO - Converting text to lowercase...
+2026-02-02 02:36:28,200 - text_preprocessing - INFO - Tokenizing text...
+2026-02-02 02:36:30,553 - text_preprocessing - INFO - Removing special characters and numbers...
+2026-02-02 02:36:30,784 - text_preprocessing - INFO - Removing stopwords...
+2026-02-02 02:36:30,850 - text_preprocessing - INFO - Applying Porter Stemming...
+2026-02-02 02:36:33,205 - text_preprocessing - INFO - Joining cleaned tokens back into text...
+2026-02-02 02:36:33,213 - text_preprocessing - INFO - 
+Sample of preprocessing steps:
+2026-02-02 02:36:33,221 - text_preprocessing - INFO - 
+Generating WordCloud for Positive Tweets...
+2026-02-02 02:37:11,717 - text_preprocessing - INFO - Generating WordCloud for Negative Tweets...
+2026-02-02 02:37:14,961 - text_preprocessing - INFO - Vocabulary Reduction: From 30105 to 11118 unique tokens (63.07% reduction)
+2026-02-02 02:37:14,961 - text_preprocessing - INFO - ===================>>> Text Preprocessing Completed Successfully!
+2026-02-02 02:37:14,961 - __main__ - INFO - 
+>>> Step 3: Exploratory Data Analysis & Visualization
+2026-02-02 02:37:14,961 - eda_visualization - INFO - ===================>>> Exploratory Data Analysis (EDA) && Visualization
+2026-02-02 02:37:14,961 - eda_visualization - INFO - Convert tweet_created column to datetime
+2026-02-02 02:37:15,128 - eda_visualization - INFO - Distribution of Sentiments in the Dataset:
+2026-02-02 02:37:15,130 - eda_visualization - INFO - Sentiment Distribution:
+airline_sentiment
+negative    9178
+neutral     3099
+positive    2363
+Name: count, dtype: int64
+2026-02-02 02:37:15,130 - eda_visualization - INFO - Number of Tweets per Airline:
+2026-02-02 02:37:16,957 - eda_visualization - INFO - What is the percentage of each sentiment category?
+2026-02-02 02:37:18,448 - eda_visualization - INFO - Which airline was mentioned the most?
+2026-02-02 02:37:18,450 - eda_visualization - INFO - The most mentioned airline is United with 3822 tweets.
+
+2026-02-02 02:37:19,941 - eda_visualization - INFO - How are sentiments distributed across each airline?
+2026-02-02 02:37:19,952 - eda_visualization - INFO - Some airlines like United and US Airways have more negative tweets than others.
+
+2026-02-02 02:37:21,648 - eda_visualization - INFO - What is the most common reason for negative tweets?
+2026-02-02 02:37:21,662 - eda_visualization - INFO - The most common negative reason is 'Customer Service Issue'.
+
+2026-02-02 02:37:23,431 - eda_visualization - INFO - Which airline received the most negative tweets?
+2026-02-02 02:37:23,443 - eda_visualization - INFO - The airline with the most negative tweets is United.
+
+2026-02-02 02:37:25,581 - eda_visualization - INFO - Which airline received the most positive tweets?
+2026-02-02 02:37:25,587 - eda_visualization - INFO - The airline with the most positive tweets is Southwest.
+
+2026-02-02 02:37:26,969 - eda_visualization - INFO - How are tweets distributed throughout the day?
+2026-02-02 02:37:26,980 - eda_visualization - INFO - Tweet activity is generally higher during the morning and early afternoon.
+
+2026-02-02 02:37:27,079 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-02-02 02:37:27,084 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-02-02 02:37:28,160 - eda_visualization - INFO - What is the average tweet length (in words)?
+2026-02-02 02:37:28,177 - eda_visualization - INFO - Most tweets contain between 15 and 25 words.
+
+2026-02-02 02:37:30,024 - eda_visualization - INFO - Are negative tweets longer than positive ones?
+2026-02-02 02:37:30,030 - eda_visualization - INFO - Negative tweets tend to be slightly longer on average 65%.
+
+2026-02-02 02:37:31,890 - eda_visualization - INFO - Is there a difference in retweet count between sentiments?
+2026-02-02 02:37:31,893 - eda_visualization - INFO - Negative tweets often receive more retweets because they provoke stronger reactions.
+
+2026-02-02 02:37:33,108 - eda_visualization - INFO - These users tweeted the most about airlines name
+JetBlueNews    63
+kbosspotter    32
+_mhertz        29
+otisday        28
+throthra       27
+Name: count, dtype: int64.
+
+2026-02-02 02:37:34,179 - eda_visualization - INFO - What are the most common tweet locations?
+2026-02-02 02:37:34,182 - eda_visualization - INFO - The most active location is Boston, MA.
+
+2026-02-02 02:37:35,710 - eda_visualization - INFO - What is the average confidence level for each sentiment?
+2026-02-02 02:37:35,713 - eda_visualization - INFO - Negative sentiment confidence is usually higher since the language is more explicit.airline_sentiment
+negative    0.933365
+neutral     0.823303
+positive    0.872039
+Name: airline_sentiment_confidence, dtype: float64
+
+2026-02-02 02:37:36,745 - eda_visualization - INFO - How is the confidence in negative reasons distributed?
+2026-02-02 02:37:38,655 - eda_visualization - INFO - What is the most common negative reason for each airline?
+2026-02-02 02:37:38,672 - eda_visualization - INFO - Each airline has different top negative reasons depending on user complaints.
+
+2026-02-02 02:37:38,673 - eda_visualization - INFO - Do retweet counts differ across airlines?
+2026-02-02 02:37:40,383 - eda_visualization - INFO - How do positive and negative tweets compare across airlines?
+2026-02-02 02:37:40,385 - eda_visualization - INFO - This shows which airlines receive the most positive vs negative feedback.
+
+2026-02-02 02:37:41,907 - eda_visualization - INFO - ===================>>> EDA & Visualization Completed Successfully!
+2026-02-02 02:37:41,907 - __main__ - INFO - 
+>>> Step 4: Training DistilBERT (Epochs=3, LR=5e-05)
+2026-02-02 02:37:41,907 - model - INFO - ===========================>>>> Deep Learning (DistilBERT) Model
+2026-02-02 02:37:41,907 - model - INFO - Params: Epochs=3, LR=5e-05, BatchSize=16
+2026-02-02 02:37:42,099 - model - INFO - Mapping sentiments to numerical labels...
+2026-02-02 02:37:42,102 - model - INFO - Dataset after mapping labels:
+2026-02-02 02:37:42,103 - model - INFO - 
+Balancing dataset using Synonym Augmentation...
+2026-02-02 02:38:03,248 - model - INFO - Balanced labels after augmentation:
+2026-02-02 02:38:03,249 - model - INFO - 
+Splitting data into train and test...
+2026-02-02 02:38:03,265 - model - INFO - Loading DistilBERT tokenizer...
+2026-02-02 02:38:04,693 - model - INFO - Tokenizing training and test data...
+2026-02-02 02:38:07,550 - model - INFO - Model Training running on: cuda
+2026-02-02 02:38:07,550 - model - INFO - Loading DistilBERT model for 3-class classification...
+2026-02-02 02:38:08,849 - model - INFO - 
+Starting training...
+2026-02-02 02:38:10,255 - model - INFO - Epoch 1 | Step 0/1377 | Loss: 1.1335
+2026-02-02 02:38:13,889 - model - INFO - Epoch 1 | Step 50/1377 | Loss: 0.8161
+2026-02-02 02:38:17,538 - model - INFO - Epoch 1 | Step 100/1377 | Loss: 0.8766
+2026-02-02 02:38:21,171 - model - INFO - Epoch 1 | Step 150/1377 | Loss: 1.0870
+2026-02-02 02:38:24,805 - model - INFO - Epoch 1 | Step 200/1377 | Loss: 0.5961
+2026-02-02 02:38:28,423 - model - INFO - Epoch 1 | Step 250/1377 | Loss: 1.0558
+2026-02-02 02:38:32,075 - model - INFO - Epoch 1 | Step 300/1377 | Loss: 0.6748
+2026-02-02 02:38:35,713 - model - INFO - Epoch 1 | Step 350/1377 | Loss: 0.4748
+2026-02-02 02:38:39,273 - model - INFO - Epoch 1 | Step 400/1377 | Loss: 0.7310
+2026-02-02 02:38:42,832 - model - INFO - Epoch 1 | Step 450/1377 | Loss: 0.6705
+2026-02-02 02:38:46,389 - model - INFO - Epoch 1 | Step 500/1377 | Loss: 0.4340
+2026-02-02 02:38:49,931 - model - INFO - Epoch 1 | Step 550/1377 | Loss: 0.5198
+2026-02-02 02:38:53,491 - model - INFO - Epoch 1 | Step 600/1377 | Loss: 0.7702
+2026-02-02 02:38:57,051 - model - INFO - Epoch 1 | Step 650/1377 | Loss: 0.4800
+2026-02-02 02:39:00,604 - model - INFO - Epoch 1 | Step 700/1377 | Loss: 0.3150
+2026-02-02 02:39:04,183 - model - INFO - Epoch 1 | Step 750/1377 | Loss: 0.5328
+2026-02-02 02:39:07,744 - model - INFO - Epoch 1 | Step 800/1377 | Loss: 0.7229
+2026-02-02 02:39:11,321 - model - INFO - Epoch 1 | Step 850/1377 | Loss: 0.3981
+2026-02-02 02:39:14,879 - model - INFO - Epoch 1 | Step 900/1377 | Loss: 0.6971
+2026-02-02 02:39:18,427 - model - INFO - Epoch 1 | Step 950/1377 | Loss: 0.7591
+2026-02-02 02:39:21,975 - model - INFO - Epoch 1 | Step 1000/1377 | Loss: 0.7224
+2026-02-02 02:39:25,554 - model - INFO - Epoch 1 | Step 1050/1377 | Loss: 0.5177
+2026-02-02 02:39:29,136 - model - INFO - Epoch 1 | Step 1100/1377 | Loss: 0.1961
+2026-02-02 02:39:32,705 - model - INFO - Epoch 1 | Step 1150/1377 | Loss: 0.7582
+2026-02-02 02:39:36,268 - model - INFO - Epoch 1 | Step 1200/1377 | Loss: 0.2638
+2026-02-02 02:39:39,820 - model - INFO - Epoch 1 | Step 1250/1377 | Loss: 0.4050
+2026-02-02 02:39:43,372 - model - INFO - Epoch 1 | Step 1300/1377 | Loss: 0.4076
+2026-02-02 02:39:46,938 - model - INFO - Epoch 1 | Step 1350/1377 | Loss: 0.5384
+2026-02-02 02:39:48,779 - model - INFO - Epoch 1/3 completed - Average Loss: 0.5946
+2026-02-02 02:39:48,850 - model - INFO - Epoch 2 | Step 0/1377 | Loss: 0.2258
+2026-02-02 02:39:52,415 - model - INFO - Epoch 2 | Step 50/1377 | Loss: 0.1066
+2026-02-02 02:39:55,986 - model - INFO - Epoch 2 | Step 100/1377 | Loss: 0.2242
+2026-02-02 02:39:59,562 - model - INFO - Epoch 2 | Step 150/1377 | Loss: 0.3295
+2026-02-02 02:40:03,137 - model - INFO - Epoch 2 | Step 200/1377 | Loss: 0.1937
+2026-02-02 02:40:06,711 - model - INFO - Epoch 2 | Step 250/1377 | Loss: 0.3695
+2026-02-02 02:40:10,295 - model - INFO - Epoch 2 | Step 300/1377 | Loss: 0.4937
+2026-02-02 02:40:13,857 - model - INFO - Epoch 2 | Step 350/1377 | Loss: 0.5725
+2026-02-02 02:40:17,428 - model - INFO - Epoch 2 | Step 400/1377 | Loss: 0.7674
+2026-02-02 02:40:20,999 - model - INFO - Epoch 2 | Step 450/1377 | Loss: 0.4563
+2026-02-02 02:40:24,594 - model - INFO - Epoch 2 | Step 500/1377 | Loss: 0.1775
+2026-02-02 02:40:28,180 - model - INFO - Epoch 2 | Step 550/1377 | Loss: 0.4051
+2026-02-02 02:40:31,777 - model - INFO - Epoch 2 | Step 600/1377 | Loss: 0.3040
+2026-02-02 02:40:35,355 - model - INFO - Epoch 2 | Step 650/1377 | Loss: 0.6317
+2026-02-02 02:40:38,953 - model - INFO - Epoch 2 | Step 700/1377 | Loss: 0.1460
+2026-02-02 02:40:42,556 - model - INFO - Epoch 2 | Step 750/1377 | Loss: 0.2864
+2026-02-02 02:40:46,127 - model - INFO - Epoch 2 | Step 800/1377 | Loss: 0.6190
+2026-02-02 02:40:49,684 - model - INFO - Epoch 2 | Step 850/1377 | Loss: 0.1504
+2026-02-02 02:40:53,270 - model - INFO - Epoch 2 | Step 900/1377 | Loss: 0.2546
+2026-02-02 02:40:56,849 - model - INFO - Epoch 2 | Step 950/1377 | Loss: 0.1293
+2026-02-02 02:41:00,410 - model - INFO - Epoch 2 | Step 1000/1377 | Loss: 0.1881
+2026-02-02 02:41:04,011 - model - INFO - Epoch 2 | Step 1050/1377 | Loss: 0.5659
+2026-02-02 02:41:07,583 - model - INFO - Epoch 2 | Step 1100/1377 | Loss: 0.1161
+2026-02-02 02:41:11,152 - model - INFO - Epoch 2 | Step 1150/1377 | Loss: 0.0900
+2026-02-02 02:41:14,723 - model - INFO - Epoch 2 | Step 1200/1377 | Loss: 0.3245
+2026-02-02 02:41:18,295 - model - INFO - Epoch 2 | Step 1250/1377 | Loss: 0.2406
+2026-02-02 02:41:21,866 - model - INFO - Epoch 2 | Step 1300/1377 | Loss: 0.4789
+2026-02-02 02:41:25,433 - model - INFO - Epoch 2 | Step 1350/1377 | Loss: 0.3071
+2026-02-02 02:41:27,282 - model - INFO - Epoch 2/3 completed - Average Loss: 0.3006
+2026-02-02 02:41:27,353 - model - INFO - Epoch 3 | Step 0/1377 | Loss: 0.1182
+2026-02-02 02:41:30,941 - model - INFO - Epoch 3 | Step 50/1377 | Loss: 0.0931
+2026-02-02 02:41:34,528 - model - INFO - Epoch 3 | Step 100/1377 | Loss: 0.1987
+2026-02-02 02:41:38,121 - model - INFO - Epoch 3 | Step 150/1377 | Loss: 0.0131
+2026-02-02 02:41:41,718 - model - INFO - Epoch 3 | Step 200/1377 | Loss: 0.0258
+2026-02-02 02:41:45,293 - model - INFO - Epoch 3 | Step 250/1377 | Loss: 0.0563
+2026-02-02 02:41:48,873 - model - INFO - Epoch 3 | Step 300/1377 | Loss: 0.2045
+2026-02-02 02:41:52,442 - model - INFO - Epoch 3 | Step 350/1377 | Loss: 0.0367
+2026-02-02 02:41:56,007 - model - INFO - Epoch 3 | Step 400/1377 | Loss: 0.1168
+2026-02-02 02:41:59,583 - model - INFO - Epoch 3 | Step 450/1377 | Loss: 0.1024
+2026-02-02 02:42:03,170 - model - INFO - Epoch 3 | Step 500/1377 | Loss: 0.0090
+2026-02-02 02:42:06,765 - model - INFO - Epoch 3 | Step 550/1377 | Loss: 0.5844
+2026-02-02 02:42:10,346 - model - INFO - Epoch 3 | Step 600/1377 | Loss: 0.0574
+2026-02-02 02:42:13,951 - model - INFO - Epoch 3 | Step 650/1377 | Loss: 0.0230
+2026-02-02 02:42:17,571 - model - INFO - Epoch 3 | Step 700/1377 | Loss: 0.0374
+2026-02-02 02:42:21,151 - model - INFO - Epoch 3 | Step 750/1377 | Loss: 0.1025
+2026-02-02 02:42:24,728 - model - INFO - Epoch 3 | Step 800/1377 | Loss: 0.1630
+2026-02-02 02:42:28,348 - model - INFO - Epoch 3 | Step 850/1377 | Loss: 0.3253
+2026-02-02 02:42:31,954 - model - INFO - Epoch 3 | Step 900/1377 | Loss: 0.0164
+2026-02-02 02:42:35,577 - model - INFO - Epoch 3 | Step 950/1377 | Loss: 0.0180
+2026-02-02 02:42:39,168 - model - INFO - Epoch 3 | Step 1000/1377 | Loss: 0.1761
+2026-02-02 02:42:42,773 - model - INFO - Epoch 3 | Step 1050/1377 | Loss: 0.3470
+2026-02-02 02:42:46,371 - model - INFO - Epoch 3 | Step 1100/1377 | Loss: 0.2408
+2026-02-02 02:42:49,961 - model - INFO - Epoch 3 | Step 1150/1377 | Loss: 0.0830
+2026-02-02 02:42:53,568 - model - INFO - Epoch 3 | Step 1200/1377 | Loss: 0.1923
+2026-02-02 02:42:57,165 - model - INFO - Epoch 3 | Step 1250/1377 | Loss: 0.1591
+2026-02-02 02:43:00,786 - model - INFO - Epoch 3 | Step 1300/1377 | Loss: 0.0528
+2026-02-02 02:43:04,393 - model - INFO - Epoch 3 | Step 1350/1377 | Loss: 0.0077
+2026-02-02 02:43:06,264 - model - INFO - Epoch 3/3 completed - Average Loss: 0.1583
+2026-02-02 02:43:06,264 - model - INFO - 
+Evaluating on test set...
+2026-02-02 02:43:11,482 - model - INFO - 
+Test Accuracy: 0.8780
+2026-02-02 02:43:11,483 - model - INFO - 
+Classification Report:
+2026-02-02 02:43:11,499 - model - INFO -               precision    recall  f1-score   support
+
+    negative       0.83      0.91      0.87      1835
+     neutral       0.87      0.82      0.85      1836
+    positive       0.94      0.90      0.92      1836
+
+    accuracy                           0.88      5507
+   macro avg       0.88      0.88      0.88      5507
+weighted avg       0.88      0.88      0.88      5507
+
+2026-02-02 02:43:11,499 - model - INFO - ===========================>>>> DistilBERT Model Training Completed!
+2026-02-02 02:43:11,756 - __main__ - INFO - 
+>>> Step 5: Logging Model, Metrics, and Artifacts to MLflow
+2026-02-02 02:43:18,703 - MLflow_lifeCycle - INFO - PyFunc Model loaded on: cuda
+2026-02-02 02:43:18,711 - MLflow_lifeCycle - INFO - Inference requested for 2 samples.
+2026-02-02 02:43:18,731 - MLflow_lifeCycle - INFO - Inference completed successfully.
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - 🚀 Model Promoted! Acc: 0.88, F1: 0.88
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - 
+══════════════════════════════════════════════════
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - 📦 Model: DistilBERT_Airline_Sentiment
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - 🔢 Version: 8
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - 🏷️ Final Stage: Production 🚀
+2026-02-02 02:43:19,342 - MLflow_lifeCycle - INFO - ══════════════════════════════════════════════════
+2026-02-02 02:43:19,343 - __main__ - INFO - ======================================================================
+2026-02-02 02:43:19,343 - __main__ - INFO -       Project Completed Successfully! ✅       
+2026-02-02 02:43:19,343 - __main__ - INFO - ======================================================================

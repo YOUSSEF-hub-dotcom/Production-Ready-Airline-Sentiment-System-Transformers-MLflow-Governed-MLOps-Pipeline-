@@ -1,0 +1,4 @@
+2025-12-27 15:26:20.803963 | positive | 0.0000 | "The flight was delayed, but the crew handled everything perfectly and stayed very friendly."
+2025-12-27 15:28:14.263989 | positive | 0.0000 | "The flight was delayed, but the crew handled everything perfectly and stayed very friendly."
+2025-12-27 15:28:29.403976 | neutral  | 0.0000 | "The flight arrived on time and everything went as scheduled."
+2025-12-27 15:28:43.355858 | negative | 0.0000 | "My flight was delayed for hours and no one explained what was going on."
